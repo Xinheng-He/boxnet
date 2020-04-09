@@ -84,18 +84,12 @@ def upsample(inputs):
 
 
 def boxnet_v2_generator(num_classes):
-
   def model(inputs, is_training):
-  
     training_batchnorm = is_training
-  
     # input is channels_last, but we need channels_first
     inputs = tf.transpose(inputs, [0, 3, 1, 2])
-    
     n_blocks = 3
-
     in0 = conv2d_fixed_padding(inputs=inputs, filters=32, kernel_size=5, strides=1, dilation=1)                                                                                  # 256
-    
     in1 = block_layer(inputs=in0, filters=32, block_fn=building_block_residual, blocks=n_blocks, strides=1, dilation=1, is_training=training_batchnorm, name='in_layer1')        # 256
     in2 = block_layer(inputs=in1, filters=32, block_fn=building_block_residual, blocks=n_blocks, strides=2, dilation=1, is_training=training_batchnorm, name='in_layer2')        # 128
     in3 = block_layer(inputs=in2, filters=64, block_fn=building_block_residual, blocks=n_blocks, strides=2, dilation=1, is_training=training_batchnorm, name='in_layer3')        # 64
