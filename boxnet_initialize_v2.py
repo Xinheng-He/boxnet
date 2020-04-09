@@ -2,21 +2,14 @@
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
-
 import argparse
 import os
 import sys
-
 import shutil
-
 import tensorflow as tf
-
 import boxnet_model_v2
 from estimator_v2 import EstimatorV2
-
 parser = argparse.ArgumentParser()
-
-
 _HEIGHT = 256
 _WIDTH = 256
 _DEPTH = 1
