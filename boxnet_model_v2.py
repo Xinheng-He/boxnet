@@ -125,15 +125,8 @@ def boxnet_v2_generator(num_classes):
 
 
     #inputs = batch_norm_relu(combined0, training_batchnorm)
-    inputs = tf.layers.conv2d(inputs=out1, 
-                              filters=num_classes, 
-                              kernel_size=1, 
-                              strides=1,
-                              dilation_rate=1,
-                              padding='SAME', 
-                              use_bias=True,
-                              data_format='channels_first',
-                              kernel_initializer=tf.variance_scaling_initializer())
+    inputs = tf.layers.conv2d(inputs=out1,  filters=num_classes, kernel_size=1, strides=1,dilation_rate=1, padding='SAME', use_bias=True,
+data_format='channels_first', kernel_initializer=tf.variance_scaling_initializer())
     
     # and back to channels_last
     inputs = tf.transpose(inputs, [0, 2, 3, 1])
