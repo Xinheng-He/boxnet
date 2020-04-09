@@ -2,27 +2,19 @@
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
-
 import argparse
 import os
 import sys
-
 import shutil
-
 import tensorflow as tf
-
 import boxnet_model_v2
 from estimator_v2 import EstimatorV2
-
 parser = argparse.ArgumentParser()
-
-
 _HEIGHT = 256
 _WIDTH = 256
 _DEPTH = 1
 _NUM_CLASSES = 3
 _BATCHSIZE = 1
-
 # We use a weight decay of 0.0002, which performs better than the 0.0001 that
 # was originally suggested.
 _WEIGHT_DECAY = 5e-4
